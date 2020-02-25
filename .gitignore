@@ -1,0 +1,23 @@
+# General Java stuff
+*.class
+*.log
+
+# IntelliJ
+.idea/
+out/
+*.iml
+*.ipr
+*.iws
+
+# SBT
+target/
+
+# Gradle
+.gradle/
+build/
+
+# URE
+*.region
+*.area
+saves/*
+

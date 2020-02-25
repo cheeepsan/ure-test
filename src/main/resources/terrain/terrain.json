@@ -1,0 +1,235 @@
+[
+  {
+    "name": "null",
+    "filechar": "@",
+    "moveTypes": ["walk"],
+    "opaque": false,
+    "sunvis": 1.0
+  },
+    {
+      "name": "grass",
+      "filechar": ".",
+      "moveTypes": ["walk","fly","roll"],
+      "opaque": false,
+      "spawnok": true,
+      "sunvis": 1.0
+    },
+  {
+    "name": "dirt",
+    "filechar": ",",
+    "moveTypes": ["walk","fly","roll"],
+    "opaque": false,
+    "spawnok": true,
+    "sunvis": 1.0,
+    "movespeed": 1.5
+  },
+    {
+      "name": "wall",
+      "filechar": "#",
+      "moveTypes": [],
+      "opaque": true,
+      "sunvis": 0.0,
+      "bonkmsg": "A stone block wall."
+    },
+  {
+    "name": "rock",
+    "filechar": "O",
+    "moveTypes": [],
+    "opaque": true,
+    "sunvis": 0.0,
+    "bonkmsg": "A rough stone face."
+  },
+    {
+      "name": "floor",
+      "filechar": "_",
+      "moveTypes": ["walk","fly","roll"],
+      "opaque": false,
+      "spawnok": true,
+      "sunvis": 0.0
+    },
+    {
+      "name": "floormoss",
+      "filechar": "9",
+      "moveTypes": ["walk","fly","roll"],
+      "opaque": false,
+      "spawnok": true,
+      "sunvis": 0.0,
+      "walkmsg": "Moss grows on the stone."
+    },
+  {
+  "name": "carvings",
+    "filechar": "8",
+    "moveTypes": ["walk","fly","roll"],
+    "opaque": false,
+    "spawnok": true,
+    "sunvis": 0.0,
+    "walkmsg": "Ancient runes cover the stone."
+},
+    {
+      "name": "door",
+      "type": "door",
+      "filechar": "D",
+      "moveTypes": ["walk","fly","roll"],
+      "opaque": true,
+      "breaklatch": true,
+      "sunvis": 0.0,
+      "glyphopen": "|",
+      "walkmsg": "An open doorway.",
+      "openmsg": "The door creaks open.",
+      "closemsg": "The door clicks shut.",
+      "lookmsg": "A rotting unfinished wooden door."
+    },
+    {
+      "name": "window",
+      "filechar": "[",
+      "moveTypes": ["climb"],
+      "opaque": false,
+      "sunvis": 1.0,
+      "bonkmsg": "Dusty glass panes in rotten wood framing.",
+      "lookmsg": "Dusty glass panes set in rotting wood frames."
+    },
+    {
+      "name": "tree",
+      "filechar": "T",
+      "moveTypes": [],
+      "opaque": true,
+      "sunvis": 0.5,
+      "walkmsg": "Tall pine trees.",
+      "bonkmsg": "A towering ancient fir tree."
+    },
+  {
+    "name": "sapling",
+    "filechar": "t",
+    "moveTypes": ["walk","fly"],
+    "opaque": false,
+    "spawnok": true,
+    "sunvis": 1.0
+  },
+    {
+      "name": "water",
+      "type": "water",
+      "filechar": "W",
+      "moveTypes": ["wade","swim","fly"],
+      "opaque": false,
+      "breaklatch": true,
+      "sunvis": 1.0,
+      "movespeed": 0.5,
+      "bonkmsg": "You can't swim, and that water looks cold anyway.",
+      "walkmsg": "You splash through waist-deep water.",
+      "ambientsound": "ambient_water.wav",
+      "ambientsoundGain": 0.7
+    },
+  {
+    "name": "still water",
+    "type": "water",
+    "filechar": "p",
+    "moveTypes": ["wade","swim","fly"],
+    "opaque": false,
+    "breaklatch": true,
+    "sunvis": 1.0,
+    "movespeed": 0.5,
+    "bonkmsg": "You can't swim, and that water looks cold anyway.",
+    "walkmsg": "You splash through waist-deep water.",
+    "ambientsound": "still_water.wav",
+    "ambientsoundGain": 0.5
+  },
+  {
+    "name": "deep water",
+    "type": "water",
+    "filechar": "w",
+    "moveTypes": ["swim","fly"],
+    "opaque": false,
+    "breaklatch": true,
+    "sunvis": 1.0,
+    "movespeed": 0.3,
+    "bonkmsg": "You can't swim, and that water looks cold anyway.",
+    "walkmsg": "You swim across the water."
+  },
+    {
+      "name": "wooden bridge",
+      "filechar": "B",
+      "moveTypes": ["walk","roll","fly"],
+      "opaque": false,
+      "sunvis": 1.0,
+      "walkmsg": "A rickety plank bridge, with no railing."
+    },
+    {
+      "name": "sand",
+      "filechar": "S",
+      "moveTypes": ["walk","roll","fly"],
+      "opaque": false,
+      "sunvis": 1.0,
+      "movespeed": 0.7,
+      "walkmsg": "Damp sand.  Trudge, trudge."
+    },
+    {
+      "name": "mud",
+      "filechar": "M",
+      "moveTypes": ["walk", "fly"],
+      "opaque": false,
+      "sunvis": 1.0,
+      "movespeed": 0.3,
+      "walkmsg": "Thick clumpy mud.  Ugh."
+    },
+    {
+      "name": "lava",
+      "type": "lava",
+      "filechar": "!",
+      "moveTypes": ["fly"],
+      "opaque": false,
+      "sunvis": 0.0,
+      "movespeed": 0.5,
+      "glow": true,
+      "breaklatch": true,
+      "walkmsg": "Oh god it burns!  It BURNS!",
+      "lookmsg": "Magma bubbles and creeps in slow motion flow."
+    },
+  {
+    "name": "cave entrance",
+    "type": "stairs",
+    "filechar": ">",
+    "moveTypes": ["walk","fly"],
+    "opaque": false,
+    "sunvis": 0.5,
+    "walkmsg": "The trail slopes down into a dark cave.",
+    "lookmsg": "The trail slopes down into a dark cave.",
+    "breaklatch": true,
+    "ambientsound": "cave_entrance.wav",
+    "ambientsoundGain": 0.9
+  },
+  {
+    "name": "cave exit",
+    "type": "stairs",
+    "filechar": "<",
+    "moveTypes": ["walk","fly"],
+    "opaque": false,
+    "sunvis": 0.5,
+    "breaklatch": true,
+    "walkmsg": "Rough stairs cut into the rock lead out of the cavern.",
+    "lookmsg": "Rough stairs cut into the rock lead out of the cavern."
+  },
+  {
+    "name": "trapdoor",
+    "type": "stairs",
+    "filechar": "X",
+    "moveTypes": ["climb"],
+    "opaque": false,
+    "sunvis": 0.0,
+    "breaklatch": true,
+    "walkmsg": "A trapdoor in the floor leads to a lower level.",
+    "lookmsg": "A trapdoor in the floor leads to a lower level."
+  },
+  {
+    "name": "ladder",
+    "type": "stairs",
+    "filechar": "H",
+    "moveTypes": ["climb"],
+    "opaque": false,
+    "sunvis": 0.0,
+    "breaklatch": true,
+    "walkmsg": "A ladder leads up to a trapdoor in the ceiling.",
+    "lookmsg": "A ladder leads up to a trapdoor in the ceiling."
+  }
+
+  ]
+

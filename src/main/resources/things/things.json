@@ -1,0 +1,158 @@
+[
+  {
+    "name": "small stone",
+    "description": "A chunk of sandstone.",
+    "tags": [ "rock", "cavern" ],
+    "spawnlevels": [ 1,50 ],
+    "weight": 10,
+    "value": 0
+  },
+  {
+    "name": "butcher knife",
+    "plural": "butcher knives",
+    "type": "weapon",
+    "category": "gear",
+    "description": "A rusty butcher knife.",
+    "equipSlots": [ "equip" ],
+    "tags": [ "complex" ],
+    "spawnlevels": [1,50],
+    "weight": 5,
+    "value": 10
+  },
+  {
+    "name": "nylon backpack",
+    "type": "container",
+    "category": "gear",
+    "description": "A nylon stiff-frame backpack.",
+    "weight": 3,
+    "value": 25
+  },
+  {
+    "name": "trucker hat",
+    "type": "clothing",
+    "category": "gear",
+    "description": "A baseball cap bearing a strange inscription.",
+    "equipSlots": [ "head" ],
+    "weight": 3,
+    "value": 5
+  },
+  {
+    "name": "hiking boots",
+    "type": "clothing",
+    "category": "gear",
+    "description": "Heavy leather hiking boots with spiked tread.",
+    "equipSlots": [ "feet" ],
+    "weight": 8,
+    "value": 20
+  },
+  {
+    "name": "Adidas running shoes",
+    "type": "clothing",
+    "category": "gear",
+    "description": "Believe it or not, I'm walkin on air.",
+    "equipSlots": [ "feet" ],
+    "weight": 1,
+    "value": 30
+  },
+  {
+    "name": "army helmet",
+    "type": "clothing",
+    "category": "gear",
+    "description": "You're a real billy badass.",
+    "equipSlots": [ "head" ],
+    "weight": 8,
+    "value": 40
+  },
+  {
+    "name": "confusion helmet",
+    "type": "clothing",
+    "category": "gear",
+    "description": "Does this thing even work?",
+    "equipSlots": [ "head" ],
+    "weight": 16,
+    "value": 2
+  },
+  {
+    "name": "aluminum bat",
+    "type": "weapon",
+    "category": "gear",
+    "description": "A dented aluminum softball bat.",
+    "equipSlots": [ "equip" ],
+    "tags": [ "complex" ],
+    "spawnlevels": [1,50],
+    "weight": 4,
+    "value": 35
+  },
+  {
+    "name": "leather jacket",
+    "type": "clothing",
+    "category": "gear",
+    "description": "A black leather jacket.  Cool.",
+    "equipSlots": [ "torso", "arms" ],
+    "weight": 7,
+    "value": 50
+  },
+  {
+    "name": "skull",
+    "description": "A broken human(ish) skull.",
+    "tags": [ "rock" ],
+    "spawnlevels": [ 1,50 ],
+    "weight": 6,
+    "value": 2
+  },
+  {
+    "name": "gold statue",
+    "description": "A golden statue of a man, arms uplifted.",
+    "weight": 15,
+    "value": 500
+  },
+  {
+    "name": "apple",
+    "iname": "an apple",
+    "type": "food",
+    "category": "consumables",
+    "description": "A red and yellow streaked apple.",
+    "tags": [ "forest", "food" ],
+    "spawnlevels": [1,50],
+    "weight": 3,
+    "value": 10
+  },
+
+  {
+    "name": "morel",
+    "type": "food",
+    "category": "consumables",
+    "description": "A delicious wrinkly brown mushroom, a hunter's forest delight.",
+    "tags": [ "forest", "food" ],
+    "spawnlevels": [1,50],
+    "weight": 0,
+    "value": 3
+  },
+  {
+    "name": "biscuit",
+    "type": "food",
+    "bites": 4,
+    "category": "consumables",
+    "description": "A hardtack traveler's biscuit.",
+    "tags":  [ "food", "product" ],
+    "spawnlevels": [1,50],
+    "weight": 0,
+    "value": 4
+  },
+
+  {
+    "name": "robe",
+    "type": "clothing",
+    "category": "gear",
+    "description": "A loose saffron dyed penitent's robe.",
+    "equipSlots": [ "torso", "arms", "legs" ]
+  },
+
+  {
+    "name": "gold coins",
+    "type": "pile",
+    "description": "Gold coins bearing a menacing profile.",
+    "weightPer": 0.01,
+    "valuePer": 1
+  }
+]
