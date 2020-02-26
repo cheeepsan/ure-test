@@ -94,13 +94,13 @@ public class Widget extends View {
         }
         Sound sound;
         if (cursor > oldcursor) {
-            sound = modal.config.soundCursorDown;
+//            sound = modal.config.soundCursorDown;
         } else if (cursor < oldcursor) {
-            sound = modal.config.soundCursorUp;
+//            sound = modal.config.soundCursorUp;
         } else {
-            sound = modal.config.soundBumpLimit;
+//            sound = modal.config.soundBumpLimit;
         }
-        modal.speaker.playUI(sound);
+//        modal.speaker.playUI(sound);
         return cursor;
     }
 

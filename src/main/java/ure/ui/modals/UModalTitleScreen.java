@@ -49,7 +49,7 @@ public class UModalTitleScreen extends UModal implements HearModalGetString, Hea
         fakeTickCount = 0;
         dismissFrameEnd = 0;
         area = _area;
-        commander.speaker.playBGM(commander.config.getTitleMusic());
+//        commander.speaker.playBGM(commander.config.getTitleMusic());
     }
 
     @Override

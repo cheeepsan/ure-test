@@ -106,16 +106,16 @@ public class UConfig {
     private float musicFadeTime = 2.5f;                   // seconds to crossfade background music
 
     private int volumeFalloffDistance = 40;             // cells away for a sound to attenuate to -infDB
-    private String titleMusic = "/sounds/ultima_dungeon.ogg";
-
-    public String soundUImodalOpen ="/sounds/echo_alert_rev.ogg";
-    public String soundUIcursorUp = "/sounds/mouse_over3.wav";
-    public String soundUIcursorDown = "/sounds/mouse_over3.wav";
-    public String soundUIselect = "/sounds/melodic2_click.ogg";
-    public String soundUIcancel = "/sounds/echo_alert.ogg";
-    public String soundUIkeystroke = "/sounds/mouse_over3.ogg";
-    public String soundUIbumpLimit = "/sounds/melodic1_click.ogg";
-    public Sound soundModalOpen, soundCursorUp, soundCursorDown, soundSelect, soundCancel, soundKeystroke, soundBumpLimit;
+//    private String titleMusic = "/sounds/ultima_dungeon.ogg";
+//
+//    public String soundUImodalOpen ="/sounds/echo_alert_rev.ogg";
+//    public String soundUIcursorUp = "/sounds/mouse_over3.wav";
+//    public String soundUIcursorDown = "/sounds/mouse_over3.wav";
+//    public String soundUIselect = "/sounds/melodic2_click.ogg";
+//    public String soundUIcancel = "/sounds/echo_alert.ogg";
+//    public String soundUIkeystroke = "/sounds/mouse_over3.ogg";
+//    public String soundUIbumpLimit = "/sounds/melodic1_click.ogg";
+//    public Sound soundModalOpen, soundCursorUp, soundCursorDown, soundSelect, soundCancel, soundKeystroke, soundBumpLimit;
 
     // Game functionality
 
@@ -156,13 +156,13 @@ public class UConfig {
      * Set up things we need to set up after singleton injection is done.
      */
     public void initialize() {
-        soundModalOpen = new Sound(soundUImodalOpen);
-        soundCursorUp = new Sound(soundUIcursorUp);
-        soundCursorDown = new Sound(soundUIcursorDown);
-        soundSelect = new Sound(soundUIselect);
-        soundCancel = new Sound(soundUIcancel);
-        soundKeystroke = new Sound(soundUIkeystroke);
-        soundBumpLimit = new Sound(soundUIbumpLimit);
+//        soundModalOpen = new Sound(soundUImodalOpen);
+//        soundCursorUp = new Sound(soundUIcursorUp);
+//        soundCursorDown = new Sound(soundUIcursorDown);
+//        soundSelect = new Sound(soundUIselect);
+//        soundCancel = new Sound(soundUIcancel);
+//        soundKeystroke = new Sound(soundUIkeystroke);
+//        soundBumpLimit = new Sound(soundUIbumpLimit);
     }
 
     /**
@@ -603,8 +603,7 @@ public class UConfig {
     public float getVolumeUI() { return volumeUI; }
     public float getMusicFadeTime() { return musicFadeTime; }
     public void setMusicFadeTime(float f) { musicFadeTime = f; }
-    public String getTitleMusic() { return titleMusic; }
-    public void setTitleMusic(String s) { titleMusic = s; }
+    public String getTitleMusic() { return "titleMusic"; } // used to be sound
     public void setVolumeFalloffDistance(int d) { volumeFalloffDistance = d; }
     public int getVolumeFalloffDistance() { return volumeFalloffDistance; }
     public boolean isFog() { return fog; }

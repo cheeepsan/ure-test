@@ -276,7 +276,7 @@ public class UModal extends View implements UAnimator {
             else focusi = widgetsFocusable.size() - 1;
         }
         focusToWidget(widgetsFocusable.get(focusi));
-        speaker.playUI(config.soundCursorDown);
+//        speaker.playUI(config.soundCursorDown);
     }
 
     void focusPreviousWidget() {
@@ -293,7 +293,7 @@ public class UModal extends View implements UAnimator {
             else focusi = 0;
         }
         focusToWidget(widgetsFocusable.get(focusi));
-        speaker.playUI(config.soundCursorUp);
+//        speaker.playUI(config.soundCursorUp);
     }
 
     void focusToWidget(Widget widget) {
@@ -309,7 +309,7 @@ public class UModal extends View implements UAnimator {
     }
 
     public void dismiss() {
-        speaker.playUI(config.soundSelect);
+//        speaker.playUI(config.soundSelect);
         dismissed = true;
         onClose();
     }
@@ -318,7 +318,7 @@ public class UModal extends View implements UAnimator {
         destroyWidgets();
         dismissed = true;
         dismissFrameEnd = 0;
-        speaker.playUI(config.soundCancel);
+//        speaker.playUI(config.soundCancel);
         onClose();
     }
 
@@ -380,10 +380,7 @@ public class UModal extends View implements UAnimator {
             return selection;
         if (mousex < xmin || mousey >= xmax)
             return selection;
-        if (mousesel < selection)
-            speaker.playUI(config.soundCursorUp);
-        if (mousesel > selection)
-            speaker.playUI(config.soundCursorDown);
+
         return mousesel;
     }
     public void mouseClick() {
@@ -494,13 +491,13 @@ public class UModal extends View implements UAnimator {
         }
         Sound sound;
         if (cursor > oldcursor) {
-            sound = config.soundCursorDown;
+//            sound = config.soundCursorDown;
         } else if (cursor < oldcursor) {
-            sound = config.soundCursorUp;
+//            sound = config.soundCursorUp;
         } else {
-            sound = config.soundBumpLimit;
+//            sound = config.soundBumpLimit;
         }
-        speaker.playUI(sound);
+//        speaker.playUI(sound);
         return cursor;
     }
 

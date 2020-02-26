@@ -426,7 +426,7 @@ UCommander implements URenderer.KeyListener,HearModalGetString,HearModalStringPi
      */
     public void showModal(UModal modal) {
         //if (camera == null) return;
-        speaker.playUI(config.soundModalOpen);
+//        speaker.playUI(config.soundModalOpen);
         attachModal(modal);
         modal.onOpen();
     }
@@ -563,7 +563,7 @@ UCommander implements URenderer.KeyListener,HearModalGetString,HearModalStringPi
     }
 
     public void startGame(UPlayer player, UArea area) {
-        speaker.playUI(new Sound("sounds/game_start.wav"));
+//        speaker.playUI(new Sound("sounds/game_start.wav"));
         setPlayer(player);
         config.setVisibilityEnable(true);
         player.moveToCell(area, player.getSaveAreaX(), player.getSaveAreaY());
@@ -581,9 +581,9 @@ UCommander implements URenderer.KeyListener,HearModalGetString,HearModalStringPi
         player = null;
         cartographer.setupRegions();
         config.setVisibilityEnable(false);
-        speaker.resetAmbients();
+//        speaker.resetAmbients();
         wipeModals();
-        speaker.playUI(config.soundCancel);
+//        speaker.playUI(config.soundCancel);
         game.setupTitleScreen();
     }
 

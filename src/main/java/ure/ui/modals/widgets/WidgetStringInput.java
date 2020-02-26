@@ -43,16 +43,17 @@ public class WidgetStringInput extends Widget {
                     text = "";
                 else
                     text = text.substring(0, text.length() - 1);
-                modal.speaker.playUI(modal.config.soundKeystroke);
-            } else
-                modal.speaker.playUI(modal.config.soundBumpLimit);
+//                modal.speaker.playUI(modal.config.soundKeystroke);
+            }
+//            else
+//                modal.speaker.playUI(modal.config.soundBumpLimit);
         } else if (k.k == GLFW_KEY_ENTER) {
             hitEnter();
         } else {
             String typed = k.typed();
             if (typed != null) {
                 text = text + typed;
-                modal.speaker.playUI(modal.config.soundKeystroke);
+//                modal.speaker.playUI(modal.config.soundKeystroke);
             }
         }
     }

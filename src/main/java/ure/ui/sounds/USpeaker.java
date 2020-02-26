@@ -473,9 +473,9 @@ public class USpeaker implements UAnimator, Runnable {
 
     @Subscribe
     public void playerChangedArea(PlayerChangedAreaEvent event) {
-        if (commander.player() != null)
-            findTerrainAmbients((UPlayer)commander.player());
-        playBGM(event.destArea.getBackgroundMusic());
+        if (commander.player() != null) {}
+//            findTerrainAmbients((UPlayer)commander.player());
+//        playBGM(event.destArea.getBackgroundMusic());
     }
 
     /**
@@ -554,8 +554,8 @@ public class USpeaker implements UAnimator, Runnable {
 
     @Subscribe
     public void hearTimeTick(TimeTickEvent e) {
-        if (commander.player() != null)
-            findTerrainAmbients((UPlayer)commander.player());
+        if (commander.player() != null) {}
+//            findTerrainAmbients((UPlayer)commander.player());
     }
 
     public void resetAmbients() {
@@ -578,7 +578,7 @@ public class USpeaker implements UAnimator, Runnable {
                 if (t != null) {
                     if (t.getAmbientsound() != null) {
                         if (!ambientSounds.containsKey(t.getName()))
-                            ambientSounds.put(t.getName(), new Ambient(t));
+//                            ambientSounds.put(t.getName(), new Ambient(t));
                         ambientSounds.get(t.getName()).addPoint(x, y, range);
                     }
                 }
