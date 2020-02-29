@@ -4,6 +4,8 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import testRogue.commander.TestUCommander;
 import testRogue.map.TestCatrographer;
+import testRogue.ui.TitleScreen;
+import testRogue.ui.character.CreateCharacterForm;
 import ure.actors.UActorCzar;
 import ure.actors.UPlayer;
 import ure.areas.UArea;
@@ -18,7 +20,6 @@ import ure.things.UThing;
 import ure.things.UThingCzar;
 import ure.ui.UCamera;
 import ure.ui.modals.HearModalTitleScreen;
-import ure.ui.modals.UModalTitleScreen;
 import ure.ui.panels.*;
 
 import javax.inject.Inject;
@@ -79,13 +80,10 @@ public class ExampleGame implements UREgame, HearModalTitleScreen {
 
         statusPanel = new StatusPanel(10, 10, config.getTextColor(), null, borderColor);
 
-        statusPanel.addText("name", " ",0,0);
-        statusPanel.addText("race", "Owl",0,1);
-        statusPanel.addText("class", "Ornithologist",0,2);
-        statusPanel.addText("turn", "T 1", 0, 5);
-        statusPanel.addText("time", "", 0, 6);
-        statusPanel.addText("location", "?", 0, 8);
-        statusPanel.addText("lens", "", 0, 20);
+        statusPanel.addText("statusPanel1", "col 0",0,0);
+        statusPanel.addText("statusPanel2", "col 1",0,1);
+        statusPanel.addText("statusPanel3", "col 2",0,2);
+        statusPanel.addText("statusPanel4", "col 5", 0, 5);
         statusPanel.setLayout(UPanel.XPOS_LEFT, UPanel.YPOS_BOTTOM, 8, 0.15f, 12, 10, 0f, 10);
         window.addPanel(statusPanel);
 
@@ -143,7 +141,16 @@ public class ExampleGame implements UREgame, HearModalTitleScreen {
         area = cartographer.getTitleArea();
         camera.moveTo(area, 50, 50);
         commander.config.setVisibilityEnable(false);
-        commander.showModal(new UModalTitleScreen(22, 22, this, "start", area));
+        commander.showModal(new TitleScreen(22, 22, this, "start", area));
+    }
+
+    public void setupCharacterForm() {
+        window.hidePanels();
+        area = cartographer.getTitleArea();
+        camera.moveTo(area, 50, 50);
+        commander.config.setVisibilityEnable(false);
+        commander.showModal(new CreateCharacterForm(22, 22, this, "character", area));
+
     }
 
     public void hearModalTitleScreen(String context, String optional) {
@@ -153,6 +160,8 @@ public class ExampleGame implements UREgame, HearModalTitleScreen {
             if (context.equals("New World")) {
                 cartographer.wipeWorld();
                 continueGame(optional);
+            } else if(context.equals("character")) {
+                setupCharacterForm();
             } else {
                 continueGame(optional);
             }
@@ -185,37 +194,7 @@ public class ExampleGame implements UREgame, HearModalTitleScreen {
         player.setName(playername);
         player.setID(commander.generateNewID(player));
 
-        UThing item = thingCzar.getThingByName("small stone");
-        item.moveTo(player);
-        item = thingCzar.getThingByName("trucker hat");
-        item.moveTo(player);
-        item = thingCzar.getThingByName("apple");
-        item.moveTo(player);
-        item = thingCzar.getThingByName("nylon backpack");
-        item.moveTo(player);
-        item = thingCzar.getThingByName("flashlight");
-        item.moveTo(player);
-        item = thingCzar.getThingByName("biscuit");
-        item.moveTo(player);
-        item = thingCzar.getThingByName("lantern");
-        item.moveTo(player);
-        item = thingCzar.getThingByName("butcher knife");
-        item.moveTo(player);
-        item = thingCzar.getThingByName("hiking boots");
-        item.moveTo(player);
 
-        item = thingCzar.getThingByName("army helmet");
-        item.moveTo(player);
-        item = thingCzar.getThingByName("confusion helmet");
-        item.moveTo(player);
-        item = thingCzar.getThingByName("aluminum bat");
-        item.moveTo(player);
-        item = thingCzar.getThingByName("leather jacket");
-        item.moveTo(player);
-        item = thingCzar.getPile("gold coins", 100);
-        item.moveTo(player);
-        item = thingCzar.getPile("gold coins", 320);
-        item.moveTo(player);
         return player;
     }
 }

@@ -2,6 +2,7 @@ package ure.sys.dagger;
 
 import dagger.Component;
 import testRogue.commander.TestUCommander;
+import testRogue.json.JsonService;
 import ure.actors.SpawnActor;
 import ure.areas.*;
 import ure.areas.gen.Shape;
@@ -93,4 +94,5 @@ public interface AppComponent {
     void inject(Shaper sha);
     void inject(ResourceManager manager);
     void inject(Dimap map);
+    void inject(JsonService jsonService);
 }

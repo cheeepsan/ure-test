@@ -1,0 +1,38 @@
+[
+  {
+  "name": "Drunken batya",
+  "description": "Just a drunken batya.",
+    "bodyType": "fat",
+    "moveTypes": ["walk","perekat"],
+  "energy": "100",
+  "money": "1000"
+
+  },
+  {
+  "name": "Angry batya",
+  "description": "Super batya.",
+    "bodyType": "slim",
+    "moveTypes": ["walk","run"],
+  "energy": "1000",
+  "money": "1000"
+
+  },
+  {
+  "name": "Sportsman batya",
+  "description": "Super mega fit batya, high energy low money. All money went on proteinchik.",
+    "bodyType": "fat",
+    "moveTypes": ["walk","wade"],
+  "energy": "2000",
+  "money": "500"
+
+  },
+  {
+  "name": "Batya s zavoda",
+  "description": "Uh blya snova na vahtu",
+    "bodyType": "fat",
+    "moveTypes": ["walk","wade"],
+  "energy": "100",
+  "money": "1000"
+
+  }
+]
