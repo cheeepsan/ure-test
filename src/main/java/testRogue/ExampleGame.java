@@ -2,7 +2,9 @@ package testRogue;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import testRogue.actors.TestUPlayer;
 import testRogue.commander.TestUCommander;
+import testRogue.json.PlayerCharacter;
 import testRogue.map.TestCatrographer;
 import testRogue.ui.TitleScreen;
 import testRogue.ui.character.CreateCharacterForm;
@@ -31,7 +33,7 @@ public class ExampleGame implements UREgame, HearModalTitleScreen {
 
     static UArea area;
     static UCamera camera;
-    static UPlayer player;
+    static TestUPlayer player;
     static StatusPanel statusPanel;
     static HotbarPanel hotbarPanel;
     static ScrollPanel scrollPanel;
@@ -80,10 +82,6 @@ public class ExampleGame implements UREgame, HearModalTitleScreen {
 
         statusPanel = new StatusPanel(10, 10, config.getTextColor(), null, borderColor);
 
-        statusPanel.addText("statusPanel1", "col 0",0,0);
-        statusPanel.addText("statusPanel2", "col 1",0,1);
-        statusPanel.addText("statusPanel3", "col 2",0,2);
-        statusPanel.addText("statusPanel4", "col 5", 0, 5);
         statusPanel.setLayout(UPanel.XPOS_LEFT, UPanel.YPOS_BOTTOM, 8, 0.15f, 12, 10, 0f, 10);
         window.addPanel(statusPanel);
 
@@ -145,34 +143,34 @@ public class ExampleGame implements UREgame, HearModalTitleScreen {
     }
 
     public void setupCharacterForm() {
-        window.hidePanels();
         area = cartographer.getTitleArea();
         camera.moveTo(area, 50, 50);
         commander.config.setVisibilityEnable(false);
-        commander.showModal(new CreateCharacterForm(22, 22, this, "character", area));
-
+        commander.showModal(new CreateCharacterForm(22, 22, this, "character", area, this));
     }
 
     public void hearModalTitleScreen(String context, String optional) {
         if (context.equals("Credits") || context.equals("Quit")) {
             commander.quitGame();
         } else {
-            if (context.equals("New World")) {
-                cartographer.wipeWorld();
-                continueGame(optional);
-            } else if(context.equals("character")) {
+            if(context.equals("character")) {
+                commander.detachModal();
                 setupCharacterForm();
-            } else {
-                continueGame(optional);
+            } else if(context.equals("main menu")) {
+                commander.detachModal();
+                setupTitleScreen();
+            } else if(context.equals("start")){
+                commander.detachModal();
             }
         }
     }
 
-    public void continueGame(String playername) {
+    public void startGame(String playername, PlayerCharacter character) {
+        cartographer.wipeWorld();
         area.requestCloseOut();
-        player = commander.loadPlayer();
+        player = (TestUPlayer)commander.loadPlayer();
         if (player == null) {
-            player = makeNewPlayer(playername);
+            player = (TestUPlayer)makeNewPlayer(playername, character);
             log.debug("Getting the starting area");
             cartographer.startLoader();
             area = cartographer.makeStartArea();
@@ -188,13 +186,23 @@ public class ExampleGame implements UREgame, HearModalTitleScreen {
         window.showPanels();
     }
 
-    public UPlayer makeNewPlayer(String playername) {
+    public UPlayer makeNewPlayer(String playername, PlayerCharacter character) {
         log.debug("Creating a brand new @Player");
-        player = new UPlayer("Player",new UColor(0.1f, 0.1f, 0.4f), 2, 3);
+        player = new TestUPlayer("Player",new UColor(0.1f, 0.1f, 0.4f), 2, 3, character);
         player.setName(playername);
         player.setID(commander.generateNewID(player));
 
+        updateStatusPanel();
 
         return player;
+    }
+
+    public void updateStatusPanel() {
+        statusPanel.addText("Name", player.name(),0,0);
+        statusPanel.addText("Money", player.getMoney(),0,1);
+        statusPanel.addText("Energy", player.getEnergy(),0,2);
+        statusPanel.addText("Time", "", 0, 3);
+        statusPanel.addText("Location", "?", 0, 4);
+        statusPanel.addText("Turn", "?", 0, 5);
     }
 }

@@ -51,10 +51,9 @@ public class StatusPanel extends UPanel {
     @Subscribe
     public void hearTimeTick(TimeTickEvent event) {
         if (commander.player() != null) {
-            setText("turn", "turn " + Integer.toString(event.turn));
-            setText("time", commander.timeString(true, " "));
-            setText("location", commander.cartographer.describeLabel(commander.player().area().getLabel()));
-            setText("name", commander.player().getName());
+            setText("Turn", "turn " + Integer.toString(event.turn));
+            setText("Time", commander.timeString(true, " "));
+            setText("Location", commander.cartographer.describeLabel(commander.player().area().getLabel()));
         }
     }
 

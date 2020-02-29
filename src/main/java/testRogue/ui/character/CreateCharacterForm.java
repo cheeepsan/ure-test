@@ -1,5 +1,6 @@
 package testRogue.ui.character;
 
+import testRogue.ExampleGame;
 import testRogue.json.JsonService;
 import testRogue.json.PlayerCharacter;
 import ure.areas.UArea;
@@ -8,77 +9,86 @@ import ure.editors.glyphed.GlyphedModal;
 import ure.editors.landed.LandedModal;
 import ure.math.UColor;
 import ure.sys.GLKey;
-import ure.ui.modals.HearModal;
-import ure.ui.modals.HearModalTitleScreen;
-import ure.ui.modals.UModal;
+import ure.ui.modals.*;
 import ure.ui.modals.widgets.Widget;
 import ure.ui.modals.widgets.WidgetListVert;
 
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class CreateCharacterForm extends UModal {
 
     WidgetListVert menuWidget;
     UArea area;
+    List<PlayerCharacter> batye = null;
+    ExampleGame game;
+    int fakeTickCount;
 
-    public CreateCharacterForm(int cellwidth, int cellheight, HearModalTitleScreen _callback, String _callbackContext, UArea _area) {
+    public CreateCharacterForm(int cellwidth, int cellheight, HearModalTitleScreen _callback, String _callbackContext, UArea _area, ExampleGame game) {
         super(_callback, _callbackContext);
 
+        fakeTickCount = 0;
 
         setDimensions(cellwidth,cellheight);
 
 
         setBgColor(new UColor(0.07f,0.07f,0.07f));
-        String[] options = new String[]{"Continue", "New World", "Quit"};
         System.out.println("TEST");
         JsonService jsonService = new JsonService();
-        List<PlayerCharacter> batye = jsonService.getBatyaObject();
-        String[] names = batye.stream().map(x -> x.getName()).toArray(String[]::new);
-        menuWidget = new WidgetListVert(this,0,13,names);
+        batye = jsonService.getBatyaObject();
+        Stream<String> names = batye.stream().map(x -> x.getName());
+        String[] options = Stream.concat(names, Stream.of("Back")).toArray(String[]::new);
+
+        menuWidget = new WidgetListVert(this,0,13, options);
         addCenteredWidget(menuWidget);
 
         commander.showModal(this);
         area = _area;
+
+        this.game = game;
     }
 
 
-//    @Override
-//    public void hearCommand(UCommand command, GLKey k) {
-//
+    @Override
+    public void hearCommand(UCommand command, GLKey k) {
+
 //        if (logoWidget.alpha < 1f) {
 //            logoWidget.alpha = 1f;
 //            return;
 //        }
-//        super.hearCommand(command, k);
-//    }
-//    @Override
-//    public void mouseClick() {
+        super.hearCommand(command, k);
+    }
+    @Override
+    public void mouseClick() {
 //        if (logoWidget.alpha < 1f) {
 //            logoWidget.alpha = 1f;
 //            return;
 //        }
-//        super.mouseClick();
-//    }
-//
-//    @Override
-//    public void pressWidget(Widget widget) {
-//        if (widget == menuWidget) {
-//            pickSelection(menuWidget.choice());
-//        }
-//    }
-//    public void hearModalChoices(String context, String option) {
-//        if (option.equals("LandEd")) {
-//            dismiss();
-//            LandedModal modal = new LandedModal(area);
-//            commander.showModal(modal);
-//        } else if (option.equals("VaultEd")) {
-//            commander.launchVaulted();
-//        } else if (option.equals("GlyphEd")) {
-//            GlyphedModal modal = new GlyphedModal();
-//            commander.showModal(modal);
-//        }
-//    }
+        super.mouseClick();
+    }
+
+    @Override
+    public void pressWidget(Widget widget) {
+        if (widget == menuWidget) {
+            pickSelection(menuWidget.choice());
+        }
+    }
+
+
+    void pickSelection(String option) {
+        if (option.equals("Back")) {
+            ((HearModalTitleScreen) callback).hearModalTitleScreen("main menu", null);
+//            UModalGetString smodal = new UModalGetString("Name your character:", 15, 25,this, "name-new-world");
+//            commander.showModal(smodal);
+
+        } else {
+            ((HearModalTitleScreen) callback).hearModalTitleScreen("start", null);
+            PlayerCharacter selectedPlayer = this.batye.stream().filter(c -> c.getName().equals(option)).findFirst().get();
+            this.game.startGame(selectedPlayer.name, selectedPlayer);
+            dismiss();
+        }
+    }
 
     public void hearModalGetString(String context, String input) {
         if (context.equals("name-new-world")) {
@@ -89,19 +99,13 @@ public class CreateCharacterForm extends UModal {
 
     @Override
     public void animationTick() {
-//        super.animationTick();
-//        area.animationTick();
-//        logoWidget.alpha += 0.02f;
-//        if (logoWidget.alpha >1f) {
-//            logoWidget.alpha = 1f;
-//            titleWidget.hidden = false;
-//            menuWidget.hidden = false;
-//        }
-//        fakeTickCount++;
-//        if (fakeTickCount > 20) {
-//            fakeTickCount = 0;
-//            commander.tickTime();
-//            commander.letActorsAct();
-//        }
+        super.animationTick();
+        area.animationTick();
+        fakeTickCount++;
+        if (fakeTickCount > 20) {
+            fakeTickCount = 0;
+            commander.tickTime();
+            commander.letActorsAct();
+        }
     }
 }
