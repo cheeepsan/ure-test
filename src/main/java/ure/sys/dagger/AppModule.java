@@ -6,7 +6,7 @@ import com.google.common.eventbus.EventBus;
 import dagger.Module;
 import dagger.Provides;
 import testRogue.commander.TestUCommander;
-import testRogue.map.TestCatrographer;
+import testRogue.map.TestCartographer;
 import ure.areas.gen.LandscaperDeserializer;
 import ure.areas.UCartographer;
 import ure.areas.gen.ULandscaper;
@@ -107,7 +107,7 @@ public class AppModule {
     @Provides
     @Singleton
     public UCartographer providesCartographer() {
-        UCartographer cartographer = new TestCatrographer();
+        UCartographer cartographer = new TestCartographer();
         return cartographer;
     }
 

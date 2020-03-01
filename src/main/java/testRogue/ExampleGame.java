@@ -3,9 +3,8 @@ package testRogue;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import testRogue.actors.TestUPlayer;
-import testRogue.commander.TestUCommander;
 import testRogue.json.PlayerCharacter;
-import testRogue.map.TestCatrographer;
+import testRogue.map.TestCartographer;
 import testRogue.ui.TitleScreen;
 import testRogue.ui.character.CreateCharacterForm;
 import ure.actors.UActorCzar;
@@ -13,12 +12,10 @@ import ure.actors.UPlayer;
 import ure.areas.UArea;
 import ure.areas.UCartographer;
 import ure.areas.UCell;
-import ure.examplegame.ExampleCartographer;
 import ure.math.UColor;
 import ure.render.URenderer;
 import ure.sys.*;
 import ure.terrain.UTerrainCzar;
-import ure.things.UThing;
 import ure.things.UThingCzar;
 import ure.ui.UCamera;
 import ure.ui.modals.HearModalTitleScreen;
@@ -121,7 +118,7 @@ public class ExampleGame implements UREgame, HearModalTitleScreen {
 
     public void startUp()  {
 
-        cartographer = new TestCatrographer();
+        cartographer = new TestCartographer();
         makeWindow();
         commander.registerComponents(this, window, player, renderer, thingCzar, actorCzar, cartographer);
 

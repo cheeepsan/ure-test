@@ -23,7 +23,7 @@ public class Food extends UThing {
     public void initializeAsTemplate() {
         super.initializeAsTemplate();
         bitesLeft = bites;
-        sound = new Sound("sounds/eating.wav");
+        //sound = new Sound("sounds/eating.wav");
     }
 
     @Override

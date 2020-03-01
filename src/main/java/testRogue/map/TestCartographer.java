@@ -1,11 +1,13 @@
 package testRogue.map;
 
+import testRogue.map.region.TestRegion;
+import testRogue.map.scaper.TestZavodScaper;
 import ure.areas.UArea;
 import ure.areas.UCartographer;
 import ure.areas.gen.ULandscaper;
 import ure.examplegame.*;
 
-public class TestCatrographer extends UCartographer {
+public class TestCartographer extends UCartographer {
 
     @Override
     public void setupRegions() {
@@ -15,13 +17,13 @@ public class TestCatrographer extends UCartographer {
         // any to load, then we'll need to add one to get things started.
         if (regions.isEmpty()) {
             addRegion(
-                    new ExampleRegionForest(
-                            "forest",
-                            "Mystic Forest",
-                            new ULandscaper[]{new ExampleForestScaper()},
+                    new TestRegion(
+                            "zavod",
+                            "Zavod ebat",
+                            new ULandscaper[]{new TestZavodScaper()},
                             new String[]{"start"},
-                            150,
-                            150,
+                            50,
+                            50,
                             1,
                             "cave entrance",
                             "cave exit",
@@ -29,7 +31,7 @@ public class TestCatrographer extends UCartographer {
                     )
             );
         }
-        startArea = "forest 1";
+        startArea = "zavod 1";
     }
 
     @Override
