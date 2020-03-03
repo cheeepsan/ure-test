@@ -1,6 +1,5 @@
 package testRogue.actors;
 
-import testRogue.json.PlayerCharacter;
 import ure.actors.UPlayer;
 import ure.math.UColor;
 

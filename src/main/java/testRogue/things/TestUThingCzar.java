@@ -1,34 +1,29 @@
-package ure.things;
+package testRogue.things;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import testRogue.json.JsonService;
+import testRogue.things.items.ShopThing;
 import ure.sys.Injector;
-import ure.sys.ResourceManager;
-import ure.sys.UCommander;
+import ure.things.Pile;
+import ure.things.UThing;
+import ure.things.UThingCzar;
 
-import javax.inject.Inject;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Set;
 
-public class UThingCzar {
+public class TestUThingCzar extends UThingCzar {
 
-    public HashMap<String,UThing> thingsByName;
+//    private HashMap<String, UThing> thingsByName;
 
-    @Inject
-    public ObjectMapper objectMapper;
-    @Inject
-    public UCommander commander;
-    @Inject
-    public ResourceManager resourceManager;
-    @Inject
-    public JsonService jsonService;
+
+    private HashMap<Integer, UThing> shopThingsById = new HashMap<Integer, UThing>();
 
     private Log log = LogFactory.getLog(UThingCzar.class);
 
-    public UThingCzar() {
+    public TestUThingCzar() {
         Injector.getAppComponent().inject(this);
     }
 
@@ -41,7 +36,7 @@ public class UThingCzar {
                     UThing[] thingObjs = objectMapper.readValue(inputStream, UThing[].class);
                     for (UThing thing : thingObjs) {
                         thing.initializeAsTemplate();
-                        thingsByName.put(thing.name, thing);
+                        thingsByName.put(thing.getName(), thing);
                         log.debug("loaded " + thing.getName());
                     }
                 } catch (IOException io) {
@@ -49,13 +44,16 @@ public class UThingCzar {
                 }
             }
         }
-    }
 
+        this.loadShopUThings();
+        log.info("UthingsCzar done");
+    }
+    @Override
     public UThing getThingByName(String name) {
         UThing template = thingsByName.get(name);
         UThing clone = template.makeClone();
         clone.initializeAsCloneFrom(template);
-        clone.setID(commander.generateNewID(clone));
+        clone.setID(super.commander.generateNewID(clone));
         return clone;
     }
 
@@ -82,6 +80,12 @@ public class UThingCzar {
             ((Pile)pile).setCount(count);
         }
         return pile;
+    }
+
+    public void loadShopUThings() {
+        for(ShopThing item: jsonService.getItemList()) {
+            this.shopThingsById.put(item.id, item);
+        }
     }
 
     public Set<String> getAllThings() { return thingsByName.keySet(); }

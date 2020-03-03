@@ -1,0 +1,14 @@
+
+[
+  {
+    "categoryName": "category 1",
+    "catDescription" : "",
+    "shopThings":[1, 2]
+  },
+  {
+    "categoryName": "category 2",
+    "catDescription" : "",
+    "shopThings":[3, 4]
+  }
+
+]

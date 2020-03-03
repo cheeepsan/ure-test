@@ -1,0 +1,32 @@
+
+[
+  {
+    "id": 1,
+    "categoryId": 1,
+    "name": "item 1",
+    "description": "just an item",
+    "price": 100
+  },
+  {
+    "id": 2,
+    "categoryId": 1,
+    "name": "item 2",
+    "description": "just an item",
+    "price": 100
+  },
+  {
+    "id": 3,
+    "categoryId": 2,
+    "name": "item 3",
+    "description": "just an item",
+    "price": 100
+  },
+  {
+    "id": 4,
+    "categoryId": 2,
+    "name": "item 4",
+    "description": "just an item",
+    "price": 100
+  }
+
+]

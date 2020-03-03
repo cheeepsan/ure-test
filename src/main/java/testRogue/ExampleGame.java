@@ -3,7 +3,7 @@ package testRogue;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import testRogue.actors.TestUPlayer;
-import testRogue.json.PlayerCharacter;
+import testRogue.actors.PlayerCharacter;
 import testRogue.map.TestCartographer;
 import testRogue.ui.TitleScreen;
 import testRogue.ui.character.CreateCharacterForm;

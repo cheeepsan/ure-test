@@ -6,7 +6,9 @@ import com.google.common.eventbus.EventBus;
 import dagger.Module;
 import dagger.Provides;
 import testRogue.commander.TestUCommander;
+import testRogue.json.JsonService;
 import testRogue.map.TestCartographer;
+import testRogue.things.TestUThingCzar;
 import ure.areas.gen.LandscaperDeserializer;
 import ure.areas.UCartographer;
 import ure.areas.gen.ULandscaper;
@@ -91,7 +93,7 @@ public class AppModule {
     @Provides
     @Singleton
     public UThingCzar providesThingCzar() {
-        UThingCzar czar = new UThingCzar();
+        UThingCzar czar = new TestUThingCzar();
         czar.loadThings();
         return czar;
     }
@@ -141,5 +143,11 @@ public class AppModule {
     @Singleton
     public ResourceManager providesResourceManager() {
         return new ResourceManager();
+    }
+
+    @Provides
+    @Singleton
+    public JsonService providesJsonService() {
+        return new JsonService();
     }
 }

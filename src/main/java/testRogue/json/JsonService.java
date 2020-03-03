@@ -1,11 +1,8 @@
 package testRogue.json;
 
-import com.fasterxml.jackson.databind.JsonNode;
-
 import com.fasterxml.jackson.databind.ObjectMapper;
-import play.api.libs.json.JsObject;
-import play.api.libs.json.JsValue;
-import play.api.libs.json.Json;
+import testRogue.actors.PlayerCharacter;
+import testRogue.things.items.ShopThing;
 import ure.sys.Injector;
 import ure.sys.ResourceManager;
 import ure.sys.UConfig;
@@ -14,7 +11,6 @@ import javax.inject.Inject;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -26,10 +22,13 @@ public class JsonService {
     @Inject
     ResourceManager resourceManager;
 
-    protected String batyaPath; // батя вряд ли будет такого размере, что придется читать по лайнам
+    protected String batyaPath;
+    protected String shopThingsPath;
+    protected String categoryPath;
 
     public JsonService() {
-        this.batyaPath = "testRogue/batyaList.json";
+        this.batyaPath = "testRogue/characters/batyaList.json";
+        this.shopThingsPath = "testRogue/items/shopThings.json";
         Injector.getAppComponent().inject(this);
     }
 
@@ -48,6 +47,21 @@ public class JsonService {
         }
 
         return batyaList;
+    }
+
+    public List<ShopThing> getItemList() {
+        ObjectMapper objectMapper = new ObjectMapper();
+        ShopThing[] itemArray = {};
+        List<ShopThing> itemList = new ArrayList<>();
+        try {
+            String json = getJsonValueFromResourceFile(shopThingsPath);
+            itemArray = objectMapper.readValue(json, ShopThing[].class);
+            itemList = Arrays.asList(itemArray);
+        } catch (Exception e) {
+            System.out.println("exception in test/jsonService" + e);
+        }
+
+        return itemList;
     }
 
     public String getJsonValueFromResourceFile(String path ) {

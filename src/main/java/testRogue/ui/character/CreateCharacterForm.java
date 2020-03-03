@@ -2,11 +2,9 @@ package testRogue.ui.character;
 
 import testRogue.ExampleGame;
 import testRogue.json.JsonService;
-import testRogue.json.PlayerCharacter;
+import testRogue.actors.PlayerCharacter;
 import ure.areas.UArea;
 import ure.commands.UCommand;
-import ure.editors.glyphed.GlyphedModal;
-import ure.editors.landed.LandedModal;
 import ure.math.UColor;
 import ure.sys.GLKey;
 import ure.ui.modals.*;
@@ -14,7 +12,6 @@ import ure.ui.modals.widgets.Widget;
 import ure.ui.modals.widgets.WidgetListVert;
 
 import java.util.List;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class CreateCharacterForm extends UModal {

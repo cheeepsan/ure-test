@@ -1,4 +1,4 @@
-package testRogue.json;
+package testRogue.actors;
 
 import java.util.ArrayList;
 import java.util.List;
